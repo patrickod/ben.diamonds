@@ -132,6 +132,8 @@
 
       animate();
 
+      Intercom('hide');
+
       window.setTimeout(function() {
         $('#blackout').css('opacity', 0);
       }, 5000);
@@ -147,6 +149,7 @@
       window.setTimeout(function() {
         $('#word1').css('opacity', 0);
         $('#word2').css('opacity', 0);
+        Intercom('show');
       }, 10000);
     }
     </script>
