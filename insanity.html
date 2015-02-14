@@ -166,12 +166,12 @@
             yaw = x / innerWidth * 180,
             pitch = y / innerHeight * 180;
 
-        document.querySelector('#cube .front').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (0+yaw) +'deg ) translateZ( 100px )';
-        document.querySelector('#cube .back').style.transform = 'rotateX( '+ (180+pitch) +'deg ) rotateY( '+ (0-yaw) +'deg ) translateZ( 100px )';
-        document.querySelector('#cube .right').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (90+yaw) +'deg ) translateZ( 100px )';
-        document.querySelector('#cube .left').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (-90+yaw) +'deg ) translateZ( 100px )';
-        document.querySelector('#cube .top').style.transform = 'rotateX( '+ (90+pitch) +'deg ) rotateZ( '+ (0-yaw) +'deg ) translateZ( 100px )';
-        document.querySelector('#cube .bottom').style.transform = 'rotateX( '+ (-90+pitch) +'deg ) rotateZ( '+ (0+yaw) +'deg ) translateZ( 100px )';
+        document.querySelector('#cube .front').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (0+yaw) +'deg ) translateZ( 100px ) scale(0.25)';
+        document.querySelector('#cube .back').style.transform = 'rotateX( '+ (180+pitch) +'deg ) rotateY( '+ (0-yaw) +'deg ) translateZ( 100px ) scale(0.25)';
+        document.querySelector('#cube .right').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (90+yaw) +'deg ) translateZ( 100px ) scale(0.25)';
+        document.querySelector('#cube .left').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (-90+yaw) +'deg ) translateZ( 100px ) scale(0.25)';
+        document.querySelector('#cube .top').style.transform = 'rotateX( '+ (90+pitch) +'deg ) rotateZ( '+ (0-yaw) +'deg ) translateZ( 100px ) scale(0.25)';
+        document.querySelector('#cube .bottom').style.transform = 'rotateX( '+ (-90+pitch) +'deg ) rotateZ( '+ (0+yaw) +'deg ) translateZ( 100px ) scale(0.25)';
     };
     </script>
     <style>
@@ -225,7 +225,9 @@
       }
 
       #cube {
-        box
+        position: absolute;
+        top: -100%;
+        left: -100%;
       }
 
       #cube figure {
@@ -275,6 +277,13 @@
         height: 100%;
         z-index: 20;
       }
+
+      body {
+        overflow: hidden;
+      }
+
+iframe { position: absolute ; }
+
     </style>
   </head>
   <body>
@@ -285,12 +294,12 @@
 
     <section class="container">
       <div id="cube">
-        <iframe class="front" src="http://ben.diamonds" width="200" height="200"></iframe>
-        <iframe class="back" src="http://ben.diamonds" width="200" height="200"></iframe>
-        <iframe class="right" src="http://ben.diamonds" width="200" height="200"></iframe>
-        <iframe class="left" src="http://ben.diamonds" width="200" height="200"></iframe>
-        <iframe class="top" src="http://ben.diamonds" width="200" height="200"></iframe>
-        <iframe class="bottom" src="http://ben.diamonds" width="200" height="200"></iframe>
+        <iframe class="front" src="http://ben.diamonds" width="800" height="800"></iframe>
+        <iframe class="back" src="http://ben.diamonds" width="800" height="800"></iframe>
+        <iframe class="right" src="http://ben.diamonds" width="800" height="800"></iframe>
+        <iframe class="left" src="http://ben.diamonds" width="800" height="800"></iframe>
+        <iframe class="top" src="http://ben.diamonds" width="800" height="800"></iframe>
+        <iframe class="bottom" src="http://ben.diamonds" width="800" height="800"></iframe>
       </div>
     </section>
 
