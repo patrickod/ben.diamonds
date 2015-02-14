@@ -1,0 +1,316 @@
+<html>
+  <head>
+    <title>
+      ben.💎💎💎💎💎💎💎💎💎💎💎💎💎💎💎
+    </title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/CSSPlugin.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;
+    s.src='https://widget.intercom.io/widget/<INSERT APP_ID HERE>';
+    var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+    <script>
+    window.onload = function() {
+      var canvas = document.getElementById('demo-canvas');
+
+      var ctx = canvas.getContext('2d');
+
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+
+
+      var mouseX = 0, mouseY = 0;
+
+      canvas.width = width;
+      canvas.height = height;
+
+      console.log(width)
+
+      window.onresize = function(){
+        width = window.innerWidth;
+            height = window.innerHeight;
+        canvas.width = width;
+            canvas.height = height;
+
+      }
+
+      function Circle (x, y){
+
+        this.x = x + Math.random()*width/20;
+        this.y = y + Math.random()*height/20;
+        this.originX = this.x;
+        this.originY = this.y;
+        this.radius =  (Math.random()*Math.PI)*4;
+        this.shadowBlur = Math.floor(Math.random() * 30) + 15;
+        this.alpha = 1;
+        if(x < width/6) {
+          this.color='gold'
+        }else if(x > width/6 && x < width/2){
+          this.color = 'cyan'
+        }else{
+          this.color = 'magenta'
+        }
+      }
+
+      Circle.prototype.shiftPoint = function(){
+            var self = this;
+              TweenLite.to(this, 1+1*Math.random(), {x:this.originX+50+Math.random()*100,
+                  y: this.originY-50+Math.random()*100,
+
+                  ease:Strong.easeInOut,
+                  onComplete: function() {
+                      self.shiftPoint();
+                  }});
+      }
+
+      Circle.prototype.draw = function(){
+        ctx.beginPath();
+                  ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+                  ctx.fillStyle = 'rgba(255,255,255,' + this.alpha + ')';
+                                ctx.shadowBlur = this.shadowBlur;
+                  ctx.shadowColor = this.color;
+                  ctx.fill();
+
+      }
+
+      Circle.prototype.getDistanceTo = function( x, y )
+      {
+        var xs = 0;
+        var ys = 0;
+
+        xs = x - this.x;
+        xs = xs * xs;
+
+        ys = y - this.y;
+        ys = ys * ys;
+
+        return Math.sqrt( xs + ys );
+      }
+
+
+      var circles = []
+
+
+          for(var x = 0; x<width; x = x + width/10) {
+          for (var y = 0; y<height; y = y + height/10) {
+            var ball = new Circle(x, y)
+                  ball.shiftPoint()
+              circles.push(ball);
+
+            }
+       }
+
+      $("body").mousemove(function(e) {
+
+        mouseX = e.pageX;
+        mouseY = e.pageY;
+
+      })
+
+
+      function animate(){
+        ctx.clearRect(0,0,width,height);
+       for(var i = 0; i < circles.length; i++){
+        var distance = circles[i].getDistanceTo(mouseX, mouseY);
+        if(distance > 200 && distance <400)
+        {
+          if(circles[i].x > mouseX){
+               circles[i].originX -= 7;
+          }else{
+            circles[i].originX += 7;
+          }
+
+          if(circles[i].y > mouseY){
+               circles[i].originY -= 7;
+          }else{
+            circles[i].originY += 7;
+          }
+
+        }
+
+         circles[i].draw()
+       }
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      window.setTimeout(function() {
+        $('#blackout').css('opacity', 0);
+      }, 5000);
+
+      window.setTimeout(function() {
+        $('#word1').css('opacity', 0.7);
+      }, 1000);
+
+      window.setTimeout(function() {
+        $('#word2').css('opacity', 0.7);
+      }, 3000);
+
+      window.setTimeout(function() {
+        $('#word1').css('opacity', 0);
+        $('#word2').css('opacity', 0);
+        Intercom('boot', {
+          name: "Ben McRedmond",
+          email: "ben@ben.diamonds",
+          created_at: 1234567890,
+          app_id: "b3vlvyq8"
+        });
+      }, 10000);
+    }
+    </script>
+    <script>
+    document.onmousemove = function (e) {
+        var x = e.clientX - innerWidth/2,
+            y = e.clientY - innerHeight/2,
+            yaw = x / innerWidth * 180,
+            pitch = y / innerHeight * 180;
+
+        document.querySelector('#cube .front').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (0+yaw) +'deg ) translateZ( 100px )';
+        document.querySelector('#cube .back').style.transform = 'rotateX( '+ (180+pitch) +'deg ) rotateY( '+ (0-yaw) +'deg ) translateZ( 100px )';
+        document.querySelector('#cube .right').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (90+yaw) +'deg ) translateZ( 100px )';
+        document.querySelector('#cube .left').style.transform = 'rotateX( '+ (0+pitch) +'deg ) rotateY( '+ (-90+yaw) +'deg ) translateZ( 100px )';
+        document.querySelector('#cube .top').style.transform = 'rotateX( '+ (90+pitch) +'deg ) rotateZ( '+ (0-yaw) +'deg ) translateZ( 100px )';
+        document.querySelector('#cube .bottom').style.transform = 'rotateX( '+ (-90+pitch) +'deg ) rotateZ( '+ (0+yaw) +'deg ) translateZ( 100px )';
+    };
+    </script>
+    <style>
+
+      h1 {
+        opacity: 0;
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+        -o-transition: all 1s ease-in-out;
+        transition: all 1s ease-in-out;
+        position: absolute;
+        z-index: 10000;
+        font-size: 100px;
+        left: 0;
+        color: yellow;
+        width: 100%;
+        text-align: center;
+      }
+
+      #blackout {
+        -webkit-transition: all 3s ease-in-out;
+        -moz-transition: all 3s ease-in-out;
+        -o-transition: all 3s ease-in-out;
+        transition: all 3s ease-in-out;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        background: black url(bigdiamonds.jpg);
+        background-size: cover;
+      }
+
+      .container {
+          z-index: 200;
+          margin: auto;
+          width: 200px;
+          height: 200px;
+          text-align: center;
+          -webkit-perspective: 1400px;
+          -moz-perspective: 1400px;
+          -o-perspective: 1400px;
+          perspective: 1400px;
+          transform: scale(1.6);
+      }
+
+      #cube {
+        box
+      }
+
+      #cube figure {
+          display: block;
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          line-height: 200px;
+          background-size: cover !important;
+          font-size: 120px;
+          box-shadow: 0 0 100px red;
+          font-weight: bold;
+          color: white;
+          text-align: center;
+          -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+          -o-backface-visibility: hidden;
+          backface-visibility: hidden;
+      }
+
+      #cube.panels-backface-invisible figure {
+          -webkit-backface-visibility: hidden;
+          -moz-backface-visibility: hidden;
+          -o-backface-visibility: hidden;
+          backface-visibility: hidden;
+      }
+
+      #cube .front  { background: url(front.png); }
+      #cube .back   { background: url(diamonds.jpg); }
+      #cube .right  { background: url(https://intercom.slack.com/emoji/perfect_hand_lush/2fb8f6fa0559f299.gif); }
+      #cube .left   { background: url(diamonds.jpg); }
+      #cube .top    { background: url(wine.jpg); }
+      #cube .bottom { background: url(https://pbs.twimg.com/profile_images/1759238195/intercom-ben-avatar_400x400.jpg); }
+
+      #cube .front  { transform: rotateY(   0deg ) translateZ( 100px ); }
+      #cube .back   { transform: rotateX( 180deg ) translateZ( 100px ); }
+      #cube .right  { transform: rotateY(  90deg ) translateZ( 100px ); }
+      #cube .left   { transform: rotateY( -90deg ) translateZ( 100px ); }
+      #cube .top    { transform: rotateX(  90deg ) translateZ( 100px ); }
+      #cube .bottom { transform: rotateX( -90deg ) translateZ( 100px ); }
+
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+      }
+    </style>
+  </head>
+  <body>
+
+    <audio autoplay>
+      <source src="diamonds.m4a">
+    </audio>
+
+    <section class="container">
+      <div id="cube">
+        <iframe class="front" src="http://ben.diamonds" width="200" height="200"></iframe>
+        <iframe class="back" src="http://ben.diamonds" width="200" height="200"></iframe>
+        <iframe class="right" src="http://ben.diamonds" width="200" height="200"></iframe>
+        <iframe class="left" src="http://ben.diamonds" width="200" height="200"></iframe>
+        <iframe class="top" src="http://ben.diamonds" width="200" height="200"></iframe>
+        <iframe class="bottom" src="http://ben.diamonds" width="200" height="200"></iframe>
+      </div>
+    </section>
+
+    <h1 id="word1" style="
+        margin-top: 100px;
+    ">happy birthday ben!</h1>
+    <h1 id="word2" style="
+        margin-top: 300px;
+    ">we're so sorry</h1>
+
+    <div id="blackout" style="
+        background: black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    "></div>
+
+    <canvas id="demo-canvas"></canvas>
+  </body>
+</html>
